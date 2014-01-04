@@ -1,0 +1,28 @@
+shell -$SHELL
+caption always "%{= Wk}%-w%{= Bw}%n %t%{-}%+w %-="
+startup_message off
+vbell off
+#activity "%c activity -> %n%f %t"
+
+bind 'k' 
+bind 'K' kill
+bind 'W' windowlist
+bind 'V' split -v
+bind 'j' focus down
+bind 'k' focus up
+bind = resize = 
+bind + resize +1
+bind - resize -1
+
+screen -t 'Terminal 0' 0 bash
+split -v
+focus down
+screen -t 'Terminal 1' 1 bash
+select 'Terminal 2' 
+split
+focus down
+screen -t htop 2 htop -u $USER
+select htop
+focus down
+select 'Terminal 0'
+altscreen on
